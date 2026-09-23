@@ -3,6 +3,7 @@ import type {
   Category,
   Company,
   CompanyIntake,
+  HolidayIntake,
   IntakeContext,
   InteractionStore,
   LocationIntake,
@@ -41,12 +42,18 @@ const momentBoostMap: Record<MomentIntake, Category[]> = {
   Vakantie: ['Weekend & Reflectie', 'Luchtig & Kroegpraat'],
 };
 
-function scoreAndSort(pool: Question[], boostCategories: Set<Category>, interactions: InteractionStore): Question[] {
+function scoreAndSort(
+  pool: Question[],
+  boostCategories: Set<Category>,
+  holiday: HolidayIntake | undefined,
+  interactions: InteractionStore,
+): Question[] {
   return pool
     .map((q) => {
       const interaction = interactions[q.id] ?? { likes: 0, dislikes: 0, saved: false };
       let score = 0;
       if (boostCategories.has(q.category)) score += 1;
+      if (holiday && q.holidays?.includes(holiday)) score += 3;
       score += interaction.likes * 2;
       score -= interaction.dislikes * 1.5;
       score += Math.random() * 1.5;
@@ -60,7 +67,8 @@ function scoreAndSort(pool: Question[], boostCategories: Set<Category>, interact
  * Bouwt een gesorteerde stapel vragen voor de gegeven context.
  * Gezelschap is een harde filter (privacy/comfort), stemming bepaalt de
  * volgorde (matches eerst) zodat de stapel nooit leeg raakt, en locatie +
- * eerdere waardering wegen mee als tiebreaker.
+ * eerdere waardering wegen mee als tiebreaker. Feestdagvragen verschijnen
+ * alleen bij de gekozen feestdag, en dan bovenaan.
  */
 export function buildStack(context: IntakeContext, interactions: InteractionStore): Question[] {
   const allowedCompany = new Set(companyMap[context.company]);
@@ -70,12 +78,16 @@ export function buildStack(context: IntakeContext, interactions: InteractionStor
     ...momentBoostMap[context.moment],
   ]);
 
-  const companyFiltered = questionsData.filter((q) => allowedCompany.has(q.company));
+  const companyFiltered = questionsData.filter(
+    (q) =>
+      allowedCompany.has(q.company) &&
+      (!q.holidays || (context.holiday !== undefined && q.holidays.includes(context.holiday))),
+  );
   const moodMatched = companyFiltered.filter((q) => allowedMoods.has(q.mood));
   const rest = companyFiltered.filter((q) => !allowedMoods.has(q.mood));
 
   return [
-    ...scoreAndSort(moodMatched, boostCategories, interactions),
-    ...scoreAndSort(rest, boostCategories, interactions),
+    ...scoreAndSort(moodMatched, boostCategories, context.holiday, interactions),
+    ...scoreAndSort(rest, boostCategories, context.holiday, interactions),
   ];
 }

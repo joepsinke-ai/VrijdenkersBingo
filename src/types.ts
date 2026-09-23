@@ -23,6 +23,8 @@ export interface Question {
   category: Category;
   mood: Mood;
   company: Company;
+  /** Alleen tonen bij deze feestdag(en). Leeg = altijd bruikbaar. */
+  holidays?: HolidayIntake[];
 }
 
 export type CompanyIntake =
