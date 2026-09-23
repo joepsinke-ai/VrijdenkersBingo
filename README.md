@@ -74,11 +74,13 @@ git pull
 npm install
 ```
 
+(je kunt dit btw ook gewoon aan Claude vragen)
+
 (`npm install` is alleen nodig als iemand onderdelen heeft toegevoegd, maar het kan geen kwaad.)
 
 ### Stap 2 — Maak een eigen branch
 
-Kies een korte naam die zegt wat je gaat doen, zonder spaties:
+Kies een korte naam die zegt wat je gaat doen of waar je aan gaat werken, zonder spaties:
 
 ```bash
 git checkout -b nieuwe-kerstvragen
@@ -86,11 +88,15 @@ git checkout -b nieuwe-kerstvragen
 
 ### Stap 3 — Werk aan de app
 
+In principe werken wij dus **lokaal** aan de app via Claude, doe dat binnen de zojuist gemaakte branche.
+
+Testen van je lokale wijzigingen doe je via (in je Claude terminal, of vraag Claude)
+
 ```bash
 npm run dev
 ```
 
-Open **http://localhost:5173**. Elke keer dat je een bestand opslaat, ververst de app vanzelf. Zo zie je meteen wat je verandert.
+Open daarna **http://localhost:5173**. Elke keer dat je een bestand opslaat, ververst de app vanzelf. Zo zie je meteen wat je verandert.
 
 Handig om te weten:
 
