@@ -14,6 +14,8 @@ Gebouwd met React, TypeScript en Vite. Netlify zet de site automatisch online zo
 4. Netlify maakt automatisch een **preview-link**, zodat iedereen je wijziging kan bekijken.
 5. **Iemand anders keurt het goed**, daarna wordt het samengevoegd en staat het binnen een paar minuten **live**.
 
+> 💡 Alle commando's in deze handleiding kun je ook gewoon aan Claude vragen.
+
 `main` is beveiligd: niemand kan daar direct iets op zetten, ook de eigenaar niet. Alles gaat via een Pull Request met een goedkeuring.
 
 ### Een paar woorden uitgelegd
@@ -78,7 +80,7 @@ npm install
 
 ### Stap 2 — Maak een eigen branch
 
-Kies een korte naam die zegt wat je gaat doen, zonder spaties:
+Kies een korte naam die zegt wat je gaat doen of waar je aan gaat werken, zonder spaties:
 
 ```bash
 git checkout -b nieuwe-kerstvragen
@@ -86,11 +88,15 @@ git checkout -b nieuwe-kerstvragen
 
 ### Stap 3 — Werk aan de app
 
+We werken **lokaal** aan de app, meestal met hulp van Claude. Doe dat altijd binnen de branch die je net hebt gemaakt.
+
+Je wijzigingen test je met dit commando (of vraag Claude om het voor je te starten):
+
 ```bash
 npm run dev
 ```
 
-Open **http://localhost:5173**. Elke keer dat je een bestand opslaat, ververst de app vanzelf. Zo zie je meteen wat je verandert.
+Open daarna **http://localhost:5173**. Elke keer dat je een bestand opslaat, ververst de app vanzelf. Zo zie je meteen wat je verandert.
 
 Handig om te weten:
 
