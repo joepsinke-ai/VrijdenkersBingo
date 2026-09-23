@@ -1,12 +1,13 @@
 # Feedback & Verandervoorstellen — De Vrijdenkers
 
-Laatst bijgewerkt: 2026-08-28
+Laatst bijgewerkt: 2026-09-23
 
 Legenda: ✅ Gedaan (staat live) · 🔄 Deels gedaan / nog verfijnen · 📋 Open actiepunt · 💭 Open vraag / brainstorm
 
 ## Design & UX
 
 - 📋 Design kunnen we nog wat mee.
+  - 💭 Design laten meebewegen met de seizoenen en feestdagen (bijv. kleuren, illustraties of accenten die passen bij kerst, lente, zomer, ...).
 - ✅ Vraag groot maken is tof (nu alleen via 2 knoppen beschikbaar) — dubbele knop verwijderd, nu één duidelijke "Stel deze vraag"-knop.
 - ✅ 'Sfeer wijzigen' anders noemen — hernoemd naar "Opnieuw afstemmen".
 - 📋 #mogen weg bovenin wat mij betreft of het — *(notitie was niet volledig, graag verduidelijken: gaat dit over de `#LUCHTIG` / `#ALLEN`-tags bovenaan de kaart?)*
@@ -17,6 +18,7 @@ Legenda: ✅ Gedaan (staat live) · 🔄 Deels gedaan / nog verfijnen · 📋 Op
 
 - ✅ "Iedereen" bij gezelschap weghalen, snap deze nu niet. — vervangen door "Collega's".
 - ✅ Feestdagen weg bij 'Locatie' — nu een eigen "Moment"-vraag met feestdag-sublijst.
+  - 💭 Een feestdag alleen kunnen kiezen in de periode eromheen (bijv. Kerst alleen in december), zodat de lijst korter en relevanter is.
 - 📋 Locatie tags kloppen nog niet (onderweg / kampvuur) = Vakantie / onderweg? *(let op: mogelijke overlap met de nieuwe "Vakantie"-optie bij Moment — even samen bekijken)*
 - 💭 4 stemmingen maken? *(nu 5: Verdiepend & Eerlijk, Luchtig & Humoristisch, Filosofisch & Prikkelend, Creatief & Spel, Inspirerend & Positief)*
 - 📋 Optie om 'alleen' aan te klikken bij gezelschap. Om de verdieping met jezelf op te zoeken a.d.h.v. mooie vragen.
