@@ -2,56 +2,204 @@
 
 Live: **https://de-vrijdenkers.netlify.app**
 
-Gebouwd met React, TypeScript en Vite. Netlify publiceert de site automatisch vanaf `main`.
+Gebouwd met React, TypeScript en Vite. Netlify zet de site automatisch online zodra er iets op `main` komt.
 
-## Aan de slag
+---
+
+## Hoe werken we samen? (in het kort)
+
+1. Je werkt op je **eigen computer** aan een **eigen kopie** van de app.
+2. Je wijzigingen zet je in een **eigen branch** (een aparte werkversie), nooit direct op `main`.
+3. Je stuurt je wijziging naar GitHub en opent een **Pull Request** (een voorstel: "wil je dit toevoegen?").
+4. Netlify maakt automatisch een **preview-link**, zodat iedereen je wijziging kan bekijken.
+5. **Iemand anders keurt het goed**, daarna wordt het samengevoegd en staat het binnen een paar minuten **live**.
+
+`main` is beveiligd: niemand kan daar direct iets op zetten, ook de eigenaar niet. Alles gaat via een Pull Request met een goedkeuring.
+
+### Een paar woorden uitgelegd
+
+| Woord | Wat het betekent |
+|---|---|
+| **Repository (repo)** | De map met alle code, online op GitHub. |
+| **`main`** | De officiële versie. Wat hier staat, staat live. |
+| **Branch** | Een aparte werkversie waarin je rustig kunt werken zonder `main` te raken. |
+| **Commit** | Een opgeslagen stap, met een korte beschrijving van wat je deed. |
+| **Push / pull** | Je werk naar GitHub sturen / het werk van anderen binnenhalen. |
+| **Pull Request (PR)** | Een voorstel om jouw branch toe te voegen aan `main`. |
+| **Review** | Iemand anders kijkt naar je wijziging en keurt hem goed (of stelt vragen). |
+
+---
+
+## Eenmalig: je computer klaarmaken
+
+Dit hoef je maar één keer te doen.
+
+1. **Maak een GitHub-account** op [github.com](https://github.com) en geef je gebruikersnaam door aan Joep.
+2. **Accepteer de uitnodiging** die je per e-mail krijgt, of via
+   [deze link](https://github.com/joepsinke-ai/VrijdenkersBingo/invitations).
+3. **Installeer de benodigde programma's:**
+   - [Node.js](https://nodejs.org) — versie 22 of nieuwer (kies "LTS")
+   - [Git](https://git-scm.com/downloads) — op een Mac staat dit er meestal al
+   - [GitHub CLI](https://cli.github.com) (`gh`) — handig om in te loggen en Pull Requests te maken
+4. **Log in bij GitHub** vanuit de terminal en volg de stappen op het scherm:
+   ```bash
+   gh auth login
+   ```
+5. **Haal het project op** en installeer de onderdelen:
+   ```bash
+   git clone https://github.com/joepsinke-ai/VrijdenkersBingo.git
+   cd VrijdenkersBingo
+   npm install
+   ```
+
+Controleer of het werkt:
 
 ```bash
-git clone https://github.com/joepsinke-ai/VrijdenkersBingo.git
-cd VrijdenkersBingo
-npm install
 npm run dev
 ```
 
-Andere handige commando's:
+Open daarna **http://localhost:5173** in je browser. Je ziet nu de app, draaiend op je eigen computer. Stoppen doe je met `Ctrl + C` in de terminal.
 
-- `npm run build` — bouwt de site naar `dist/` (dit doet Netlify ook)
-- `npm run lint` — controleert de code met Oxlint
+---
 
-## Werkwijze: altijd via een Pull Request
+## Elke keer dat je iets wilt veranderen
 
-Alles wat op `main` komt, staat meteen live. Daarom pushen we **nooit direct naar `main`**, maar werken we altijd via een branch en een Pull Request.
+### Stap 1 — Haal de nieuwste versie op
 
-1. **Haal de laatste versie op**
-   ```bash
-   git checkout main
-   git pull
-   ```
-2. **Maak een branch** met een korte, duidelijke naam
-   ```bash
-   git checkout -b nieuwe-vragen
-   ```
-3. **Werk en commit** in kleine stappen
-   ```bash
-   git add .
-   git commit -m "Tien nieuwe vragen over filosofie"
-   ```
-4. **Push je branch** naar GitHub
-   ```bash
-   git push -u origin nieuwe-vragen
-   ```
-5. **Open een Pull Request** op GitHub (of met `gh pr create`). Netlify zet er binnen een paar minuten een **preview-link** bij, zodat iedereen de wijziging kan bekijken voordat hij live gaat.
-6. **Laat iemand anders meekijken** en voeg de Pull Request daarna samen met **Squash and merge**.
-7. **Ruim op**: ga terug naar `main`, haal de nieuwe versie op en verwijder je branch.
-   ```bash
-   git checkout main
-   git pull
-   git branch -d nieuwe-vragen
-   ```
+Anderen hebben misschien al iets veranderd. Begin daarom altijd zo:
+
+```bash
+git checkout main
+git pull
+npm install
+```
+
+(`npm install` is alleen nodig als iemand onderdelen heeft toegevoegd, maar het kan geen kwaad.)
+
+### Stap 2 — Maak een eigen branch
+
+Kies een korte naam die zegt wat je gaat doen, zonder spaties:
+
+```bash
+git checkout -b nieuwe-kerstvragen
+```
+
+### Stap 3 — Werk aan de app
+
+```bash
+npm run dev
+```
+
+Open **http://localhost:5173**. Elke keer dat je een bestand opslaat, ververst de app vanzelf. Zo zie je meteen wat je verandert.
+
+Handig om te weten:
+
+- De vragen staan in `src/data/questionsData.ts`.
+- De onderdelen van het scherm staan in `src/components/`.
+- Ideeën en openstaande punten staan in `FEEDBACK.md`.
+
+### Stap 4 — Controleer of alles klopt
+
+Voordat je je werk deelt:
+
+```bash
+npm run build
+npm run lint
+```
+
+Zie je rode foutmeldingen? Los ze eerst op (of vraag om hulp). Lukt dit hier niet, dan lukt het straks op Netlify ook niet.
+
+### Stap 5 — Sla je werk op (commit)
+
+```bash
+git add .
+git commit -m "Tien nieuwe kerstvragen toegevoegd"
+```
+
+Schrijf een korte, duidelijke beschrijving. Je mag dit meerdere keren doen tijdens je werk.
+
+### Stap 6 — Stuur je werk naar GitHub
+
+```bash
+git push -u origin nieuwe-kerstvragen
+```
+
+### Stap 7 — Open een Pull Request
+
+```bash
+gh pr create
+```
+
+Of ga naar [de repo op GitHub](https://github.com/joepsinke-ai/VrijdenkersBingo) en klik op de gele balk **Compare & pull request**.
+
+Beschrijf kort **wat** je hebt veranderd en **waarom**.
+
+### Stap 8 — Wacht op de preview en de review
+
+- Na een paar minuten verschijnt in je Pull Request een **preview-link** van Netlify
+  (bijvoorbeeld `deploy-preview-3--de-vrijdenkers.netlify.app`). Stuur die gerust rond.
+- **Een van de anderen bekijkt je wijziging.** Die kan:
+  - op **Approve** klikken → goedgekeurd;
+  - een opmerking plaatsen → pas je werk aan (stap 3 t/m 6 opnieuw, dezelfde branch) en je Pull Request wordt vanzelf bijgewerkt.
+
+### Stap 9 — Samenvoegen en live zetten
+
+Is de Pull Request goedgekeurd en is de preview gelukt? Klik dan op **Squash and merge**.
+Netlify zet de nieuwe versie binnen een paar minuten live, en de branch wordt automatisch opgeruimd.
+
+### Stap 10 — Opruimen op je eigen computer
+
+```bash
+git checkout main
+git pull
+git branch -D nieuwe-kerstvragen
+```
+
+Klaar! Voor de volgende wijziging begin je weer bij stap 1.
+
+---
+
+## Hoe gaan we om met wijzigingen?
+
+### Regels (worden automatisch afgedwongen)
+
+- Niemand kan direct iets op `main` zetten, alles gaat via een Pull Request.
+- Elke Pull Request heeft **één goedkeuring van iemand anders** nodig. Je eigen werk kun je niet zelf goedkeuren.
+- Verander je iets ná een goedkeuring, dan moet er **opnieuw** goedgekeurd worden.
+- Alle opmerkingen moeten **opgelost** zijn voordat je kunt samenvoegen.
+- De **Netlify-preview moet lukken**. Een wijziging die de site kapotmaakt, kan niet live.
 
 ### Afspraken
 
-- Eén branch per wijziging of functie; houd Pull Requests klein.
-- Controleer dat `npm run build` lukt voordat je een Pull Request opent.
-- Werken twee mensen aan hetzelfde bestand? Stem het even af, dat voorkomt merge-conflicten.
-- Gaat er toch iets mis op `main`? Geen paniek: Netlify houdt de vorige versie online als een build mislukt, en elke wijziging is terug te draaien.
+- **Eén wijziging per Pull Request.** Kleine Pull Requests zijn makkelijker te bekijken.
+- **Reageer binnen een paar dagen** op een review-verzoek van een ander.
+- **Werk je aan hetzelfde bestand als iemand anders?** Stem het even af, dat voorkomt conflicten.
+- **Zet nooit wachtwoorden of geheime sleutels in de code.** De repo is openbaar: iedereen kan de code lezen (maar alleen wij kunnen hem wijzigen).
+- **Twijfel je?** Open je Pull Request gewoon en vraag het in een opmerking.
+
+### Als er iets misgaat
+
+- **"Conflict" bij samenvoegen?** Iemand anders heeft dezelfde regels veranderd. Haal de nieuwste versie in je branch en los het op:
+  ```bash
+  git checkout main
+  git pull
+  git checkout nieuwe-kerstvragen
+  git merge main
+  ```
+  Open de bestanden die Git noemt, kies welke versie je wilt houden, sla op en doe dan `git add .`, `git commit` en `git push`. Lukt het niet? Vraag om hulp.
+- **Preview mislukt?** Klik in je Pull Request op **Details** naast de Netlify-melding om te zien wat er fout ging.
+- **Iets live gezet dat niet klopt?** Geen paniek: elke wijziging is terug te draaien. Open op GitHub de samengevoegde Pull Request en klik op **Revert**. Dat maakt een nieuwe Pull Request die de wijziging ongedaan maakt.
+- **Toch op `main` gewerkt in plaats van een branch?** Geen probleem, zolang je nog niet gecommit hebt: maak nu alsnog een branch met `git checkout -b mijn-branch`. Je wijzigingen gaan mee. (Wel al gecommit? Vraag om hulp.)
+
+---
+
+## Handige commando's
+
+| Commando | Wat het doet |
+|---|---|
+| `npm run dev` | Start de app op je eigen computer (http://localhost:5173) |
+| `npm run build` | Bouwt de site zoals Netlify dat doet, handig om fouten te vinden |
+| `npm run lint` | Controleert de code op veelvoorkomende fouten |
+| `npm run preview` | Bekijkt de gebouwde versie (na `npm run build`) |
+| `git status` | Laat zien op welke branch je zit en wat je hebt veranderd |
+| `gh pr status` | Laat de status van jouw Pull Requests zien |
