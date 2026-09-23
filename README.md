@@ -14,6 +14,8 @@ Gebouwd met React, TypeScript en Vite. Netlify zet de site automatisch online zo
 4. Netlify maakt automatisch een **preview-link**, zodat iedereen je wijziging kan bekijken.
 5. **Iemand anders keurt het goed**, daarna wordt het samengevoegd en staat het binnen een paar minuten **live**.
 
+> 💡 Alle commando's in deze handleiding kun je ook gewoon aan Claude vragen.
+
 `main` is beveiligd: niemand kan daar direct iets op zetten, ook de eigenaar niet. Alles gaat via een Pull Request met een goedkeuring.
 
 ### Een paar woorden uitgelegd
@@ -74,8 +76,6 @@ git pull
 npm install
 ```
 
-(je kunt dit btw ook gewoon aan Claude vragen)
-
 (`npm install` is alleen nodig als iemand onderdelen heeft toegevoegd, maar het kan geen kwaad.)
 
 ### Stap 2 — Maak een eigen branch
@@ -88,9 +88,9 @@ git checkout -b nieuwe-kerstvragen
 
 ### Stap 3 — Werk aan de app
 
-In principe werken wij dus **lokaal** aan de app via Claude, doe dat binnen de zojuist gemaakte branche.
+We werken **lokaal** aan de app, meestal met hulp van Claude. Doe dat altijd binnen de branch die je net hebt gemaakt.
 
-Testen van je lokale wijzigingen doe je via (in je Claude terminal, of vraag Claude)
+Je wijzigingen test je met dit commando (of vraag Claude om het voor je te starten):
 
 ```bash
 npm run dev
