@@ -1,14 +1,15 @@
-import { Bookmark, Layers } from 'lucide-react';
+import { Bookmark, House, Layers } from 'lucide-react';
 
 export type Tab = 'deck' | 'saved';
 
 interface Props {
   active: Tab;
   onChange: (tab: Tab) => void;
+  onHome: () => void;
   savedCount: number;
 }
 
-export default function BottomNav({ active, onChange, savedCount }: Props) {
+export default function BottomNav({ active, onChange, onHome, savedCount }: Props) {
   const items: { key: Tab; label: string; icon: typeof Layers }[] = [
     { key: 'deck', label: 'Kaarten', icon: Layers },
     { key: 'saved', label: 'Bewaard', icon: Bookmark },
@@ -17,6 +18,10 @@ export default function BottomNav({ active, onChange, savedCount }: Props) {
   return (
     <nav className="sticky bottom-0 z-20 border-t border-ink-900/8 bg-cream-100/90 pb-[env(safe-area-inset-bottom)] backdrop-blur">
       <div className="mx-auto flex w-full max-w-lg items-stretch justify-around">
+        <button type="button" onClick={onHome} className="relative flex flex-1 flex-col items-center gap-1 py-3">
+          <House size={21} strokeWidth={2.2} className="text-ink-500" />
+          <span className="text-[11px] font-medium text-ink-500">Home</span>
+        </button>
         {items.map(({ key, label, icon: Icon }) => {
           const isActive = key === active;
           return (

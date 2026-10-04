@@ -52,6 +52,7 @@ const holidayOptions: HolidayIntake[] = [
 interface Props {
   initial?: Partial<IntakeContext>;
   onComplete: (context: IntakeContext) => void;
+  onHome: () => void;
 }
 
 function OptionGroup<T extends string>({
@@ -102,7 +103,7 @@ function OptionGroup<T extends string>({
   );
 }
 
-export default function ContextIntake({ initial, onComplete }: Props) {
+export default function ContextIntake({ initial, onComplete, onHome }: Props) {
   const [company, setCompany] = useState<CompanyIntake | undefined>(initial?.company);
   const [location, setLocation] = useState<LocationIntake | undefined>(initial?.location);
   const [mood, setMood] = useState<MoodIntake | undefined>(initial?.mood);
@@ -125,10 +126,15 @@ export default function ContextIntake({ initial, onComplete }: Props) {
         transition={{ duration: 0.4, ease: 'easeOut' }}
         className="mb-10"
       >
-        <div className="mb-4 flex items-center gap-2 text-terracotta-600">
+        <button
+          type="button"
+          onClick={onHome}
+          aria-label="Terug naar home"
+          className="mb-4 flex items-center gap-2 text-terracotta-600 transition-colors hover:text-terracotta-700"
+        >
           <Sparkles size={18} strokeWidth={2} />
           <span className="text-xs font-semibold uppercase tracking-[0.18em]">De Vrijdenkers</span>
-        </div>
+        </button>
         <h1 className="font-serif text-4xl font-medium leading-tight text-ink-950">Even afstemmen</h1>
         <p className="mt-3 text-[15px] leading-relaxed text-ink-600">
           Vier korte keuzes, zodat de vragen aansluiten bij het gezelschap, de plek, jouw stemming en

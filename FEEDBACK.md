@@ -36,7 +36,7 @@ Legenda: ✅ Gedaan (staat live) · 🔄 Deels gedaan / nog verfijnen · 📋 Op
 
 ## Verhaal & Merk
 
-- 📋 Ons verhaal / achtergrond ergens toevoegen. De waarom van het project 🧡
+- 🔄 Ons verhaal / achtergrond ergens toevoegen. De waarom van het project 🧡 — er is nu een landingspagina met korte uitleg en een blok "Ons verhaal"; daar staat nog een concepttekst, de definitieve tekst moet nog geschreven worden.
 
 ## Feedback & Validatie
 
