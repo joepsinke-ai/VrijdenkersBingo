@@ -50,9 +50,16 @@ export default function Landing({ onStart }: Props) {
 
         <div className="border-l-2 border-terracotta-500/25 pl-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-ink-500">Ons verhaal</p>
-          {/* Voorlopige tekst: definitieve versie volgt van het team (zie FEEDBACK.md). */}
           <p className="text-[15px] leading-relaxed text-ink-600">
-            [Concepttekst] Hier komt in een paar zinnen waarom we De Vrijdenkers zijn begonnen.
+            We zijn digitaal meer verbonden dan ooit. Met social media en telefoons zijn we in staat
+            om iedereen te volgen. Maar we lijken te vergeten om een diep, persoonlijk gesprek te
+            voeren. Om kwetsbaar te durven zijn, en elkaar in de ogen aan te kijken. Om verbinding te
+            maken in het echte leven.
+          </p>
+          <p className="mt-3 text-[15px] leading-relaxed text-ink-600">
+            Door elkaar mooie en prikkelende vragen te stellen, ontstaat er iets moois. Een gesprek
+            kan het begin zijn van iets moois. Daarom hebben we dit kaartspel bedacht: hopelijk
+            brengt het je iets moois.
           </p>
         </div>
       </div>
