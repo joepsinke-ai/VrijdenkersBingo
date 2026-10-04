@@ -20,7 +20,7 @@ function App() {
 
   if (!started) {
     return (
-      <div className="min-h-dvh bg-cream-100">
+      <div className="min-h-dvh bg-paper">
         <Landing onStart={() => setStarted(true)} />
       </div>
     );
@@ -28,14 +28,14 @@ function App() {
 
   if (!context) {
     return (
-      <div className="min-h-dvh bg-cream-100">
+      <div className="min-h-dvh bg-paper">
         <ContextIntake onComplete={setContext} onHome={() => setStarted(false)} />
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-cream-100">
+    <div className="flex min-h-dvh flex-col bg-paper">
       <div className={`flex flex-1 flex-col px-5 ${tab === 'deck' ? '' : 'hidden'}`}>
         <TopBar context={context} onChangeContext={() => setContext(null)} />
         <CardStack

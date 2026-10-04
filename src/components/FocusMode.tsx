@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Bookmark, X } from 'lucide-react';
+import { tileColor } from '../lib/tileColor';
 import type { Question } from '../types';
+import Wordmark from './Wordmark';
 
 interface Props {
   question: Question;
@@ -15,18 +17,16 @@ export default function FocusMode({ question, saved, onClose, onToggleSave }: Pr
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex flex-col bg-ink-950 px-7 py-8 text-cream-50"
+      className={`fixed inset-0 z-50 flex flex-col px-7 py-6 text-tile-ink ${tileColor[question.category]}`}
     >
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-cream-100/50">
-          De Vrijdenkers
-        </span>
+        <Wordmark />
         <div className="flex items-center gap-1">
           <button
             type="button"
             onClick={onToggleSave}
             aria-label="Vraag opslaan"
-            className={`rounded-full p-2.5 transition-colors ${saved ? 'text-gold-400' : 'text-cream-100/60 hover:text-cream-50'}`}
+            className="rounded-full p-2.5 transition-colors hover:bg-tile-ink/10"
           >
             <Bookmark size={20} strokeWidth={2.2} fill={saved ? 'currentColor' : 'none'} />
           </button>
@@ -34,7 +34,7 @@ export default function FocusMode({ question, saved, onClose, onToggleSave }: Pr
             type="button"
             onClick={onClose}
             aria-label="Focusmodus sluiten"
-            className="rounded-full p-2.5 text-cream-100/60 transition-colors hover:text-cream-50"
+            className="rounded-full p-2.5 transition-colors hover:bg-tile-ink/10"
           >
             <X size={22} strokeWidth={2.2} />
           </button>
@@ -48,14 +48,12 @@ export default function FocusMode({ question, saved, onClose, onToggleSave }: Pr
         className="flex flex-1 items-center justify-center"
         onClick={onClose}
       >
-        <p className="text-center font-serif text-[9vw] font-medium leading-[1.15] sm:text-5xl">
+        <p className="max-w-3xl text-center font-serif text-[9.5vw] font-bold leading-[1.08] tracking-[-0.01em] sm:text-6xl">
           {question.text}
         </p>
       </motion.div>
 
-      <p className="text-center text-xs font-medium uppercase tracking-[0.14em] text-cream-100/40">
-        Tik ergens om terug te keren
-      </p>
+      <p className="text-center text-sm font-medium text-tile-ink/70">Tik ergens om terug te keren</p>
     </motion.div>
   );
 }
