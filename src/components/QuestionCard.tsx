@@ -3,6 +3,7 @@ import { animate, motion, useMotionValue, useTransform, type PanInfo } from 'fra
 import { Bookmark, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { tileColor } from '../lib/tileColor';
 import type { Question } from '../types';
+import Tag from './Tag';
 
 interface Props {
   question: Question;
@@ -92,12 +93,8 @@ const QuestionCard = forwardRef<QuestionCardHandle, Props>(function QuestionCard
 
         <div className="relative z-10 flex h-full flex-col">
           <div className="mb-6 flex flex-wrap items-center gap-2">
-            <span className="rounded-full bg-tile-ink px-2.5 py-1 text-[11px] font-semibold text-on-accent">
-              {question.mood}
-            </span>
-            <span className="text-xs font-semibold">
-              {question.company === 'Hecht' ? 'Hechte vrienden' : question.company}
-            </span>
+            <Tag mood={question.mood}>{question.mood}</Tag>
+            <Tag>{question.company === 'Hecht' ? 'Hechte vrienden' : question.company}</Tag>
           </div>
 
           <div className="flex flex-1 items-center">

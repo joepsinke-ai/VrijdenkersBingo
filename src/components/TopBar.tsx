@@ -1,5 +1,6 @@
 import { SlidersHorizontal } from 'lucide-react';
-import type { IntakeContext } from '../types';
+import type { IntakeContext, Mood } from '../types';
+import Tag from './Tag';
 
 interface Props {
   context: IntakeContext;
@@ -10,10 +11,8 @@ export default function TopBar({ context, onChangeContext }: Props) {
   return (
     <div className="mx-auto flex w-full max-w-md items-center justify-between gap-3 pb-5 pt-4">
       <div className="flex flex-wrap items-center gap-1.5">
-        <span className="rounded-full bg-ink px-2.5 py-1 text-[11px] font-semibold text-paper">{context.company}</span>
-        <span className="rounded-full bg-ink px-2.5 py-1 text-[11px] font-semibold text-paper">
-          {context.mood.split(' & ')[0]}
-        </span>
+        <Tag>{context.company}</Tag>
+        <Tag mood={context.mood.split(' & ')[0] as Mood}>{context.mood.split(' & ')[0]}</Tag>
       </div>
       <button
         type="button"

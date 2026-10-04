@@ -5,6 +5,7 @@ import { tileColor } from '../lib/tileColor';
 import type { Category } from '../types';
 import FloatingBar from './FloatingBar';
 import Wordmark from './Wordmark';
+import Tag from './Tag';
 
 const steps = [
   { title: 'Stem af', text: 'Kies met wie je bent, waar je zit en waar je zin in hebt.' },
@@ -55,9 +56,7 @@ export default function Landing({ onStart }: Props) {
                 <div
                   className={`flex h-44 flex-col items-start gap-3 rounded-tile p-4 text-left text-tile-ink shadow-tile sm:h-52 ${tileColor[q.category]} ${previewPose[i]}`}
                 >
-                  <span className="rounded-full bg-tile-ink px-2 py-0.5 text-[10px] font-semibold text-on-accent">
-                    {q.mood}
-                  </span>
+                  <Tag mood={q.mood}>{q.mood}</Tag>
                   <p className="line-clamp-5 font-serif text-[15px] font-bold leading-[1.15] sm:text-lg">{q.text}</p>
                 </div>
               </motion.div>

@@ -3,6 +3,7 @@ import { Bookmark, Maximize2 } from 'lucide-react';
 import { questionsData } from '../data/questionsData';
 import { tileColor } from '../lib/tileColor';
 import type { Question } from '../types';
+import Tag from './Tag';
 
 interface Props {
   savedIds: number[];
@@ -32,10 +33,8 @@ export default function SavedQuestions({ savedIds, toggleSave, onFocusQuestion }
             className={`rounded-tile p-5 text-tile-ink ${tileColor[q.category]}`}
           >
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-tile-ink px-2.5 py-1 text-[11px] font-semibold text-on-accent">
-                {q.mood}
-              </span>
-              <span className="text-xs font-semibold">{q.category}</span>
+              <Tag mood={q.mood}>{q.mood}</Tag>
+              <Tag>{q.category}</Tag>
             </div>
             <p className="font-serif text-[22px] font-bold leading-[1.15]">{q.text}</p>
             <div className="-mb-2 -mr-2 mt-3 flex items-center justify-end gap-1">

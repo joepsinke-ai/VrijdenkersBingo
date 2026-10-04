@@ -20,7 +20,7 @@ export default function FocusMode({ question, saved, onClose, onToggleSave }: Pr
       className={`fixed inset-0 z-50 flex flex-col px-7 py-6 text-tile-ink ${tileColor[question.category]}`}
     >
       <div className="flex items-center justify-between">
-        <Wordmark />
+        <Wordmark className="text-tile-ink/70" />
         <div className="flex items-center gap-1">
           <button
             type="button"

@@ -1,7 +1,10 @@
-export default function Wordmark({ className = '' }: { className?: string }) {
+import { Sparkles } from 'lucide-react';
+
+export default function Wordmark({ className = 'text-brand' }: { className?: string }) {
   return (
-    <span className={`font-serif text-xl font-bold italic leading-normal tracking-tight ${className}`}>
-      De Vrijdenkers
+    <span className={`flex items-center gap-2 ${className}`}>
+      <Sparkles size={18} strokeWidth={2} />
+      <span className="text-xs font-semibold uppercase tracking-[0.18em]">De Vrijdenkers</span>
     </span>
   );
 }

@@ -14,12 +14,13 @@
   --color-ink: #151515;
   --color-ink-soft: #5a5a57;
   --color-line: #cccccc;
-  --color-band: #d0e0ed;
+  --color-band: #f0eadc;
   --color-wash: #f5f6eb;
 
   --color-accent: #cd4643;
   --color-accent-deep: #b23a37;
   --color-on-accent: #fffdfb;
+  --color-brand: #b23a37;
 
   /* Tegelkleuren blijven in licht en donker gelijk, met donkere tekst erop. */
   --color-tile-ink: #151515;
@@ -31,8 +32,8 @@
 
   --radius-tile: 16px;
 
-  --shadow-tile: 0 14px 28px -16px rgba(20, 42, 58, 0.45);
-  --shadow-float: 0 1px 2px rgba(20, 42, 58, 0.12), 0 10px 30px -8px rgba(20, 42, 58, 0.32);
+  --shadow-tile: 0 14px 28px -16px rgba(46, 38, 26, 0.45);
+  --shadow-float: 0 1px 2px rgba(46, 38, 26, 0.12), 0 10px 30px -8px rgba(46, 38, 26, 0.32);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,7 +43,8 @@
     --color-ink: #f3f2ec;
     --color-ink-soft: #a9aba6;
     --color-line: #3a3f45;
-    --color-band: #142a3a;
+    --color-band: #1f1e1b;
+    --color-brand: #e0736f;
     --color-wash: #1a1d20;
   }
 }
