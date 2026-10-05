@@ -57,9 +57,9 @@ export default function Landing({ onStart }: Props) {
             maken in het echte leven.
           </p>
           <p className="mt-3 text-[15px] leading-relaxed text-ink-600">
-            Door elkaar mooie en prikkelende vragen te stellen, ontstaat er iets moois. Een gesprek
-            kan het begin zijn van iets moois. Daarom hebben we dit kaartspel bedacht: hopelijk
-            brengt het je iets moois.
+            Door elkaar mooie en prikkelende vragen te stellen, ontstaat er verbinding. Een gesprek
+            kan het begin zijn van iets moois. Daarom hebben we dit kaartenspel bedacht: hopelijk
+            brengt het je mooie gesprekken.
           </p>
         </div>
       </div>

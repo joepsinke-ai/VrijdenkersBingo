@@ -13,7 +13,7 @@ import type { IntakeContext, Question } from './types';
 
 function App() {
   const [context, setContext] = useLocalStorage<IntakeContext | null>('vrijdenkers.context.v1', null);
-  const [started, setStarted] = useState(false);
+  const [started, setStarted] = useState(context !== null);
   const [tab, setTab] = useState<Tab>('deck');
   const [focusQuestion, setFocusQuestion] = useState<Question | null>(null);
   const { store, like, dislike, toggleSave, isSaved, savedIds } = useInteractions();
