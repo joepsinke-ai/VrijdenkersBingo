@@ -1,22 +1,29 @@
-import { Bookmark, Layers } from 'lucide-react';
+import { Bookmark, House, Layers } from 'lucide-react';
 
 export type Tab = 'deck' | 'saved';
 
 interface Props {
   active: Tab;
   onChange: (tab: Tab) => void;
+  onHome: () => void;
   savedCount: number;
 }
 
-export default function BottomNav({ active, onChange, savedCount }: Props) {
+const itemClass = 'flex items-center gap-1.5 rounded-full px-3.5 py-2.5 text-[13px] font-semibold transition-colors';
+
+export default function BottomNav({ active, onChange, onHome, savedCount }: Props) {
   const items: { key: Tab; label: string; icon: typeof Layers }[] = [
     { key: 'deck', label: 'Kaarten', icon: Layers },
     { key: 'saved', label: 'Bewaard', icon: Bookmark },
   ];
 
   return (
-    <nav className="sticky bottom-0 z-20 border-t border-ink-900/8 bg-cream-100/90 pb-[env(safe-area-inset-bottom)] backdrop-blur">
-      <div className="mx-auto flex w-full max-w-lg items-stretch justify-around">
+    <nav className="pointer-events-none sticky bottom-0 z-20 flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3">
+      <div className="pointer-events-auto flex items-center gap-1 rounded-full border border-line/70 bg-surface p-1.5 shadow-float">
+        <button type="button" onClick={onHome} className={`${itemClass} hover:bg-ink/8`}>
+          <House size={17} strokeWidth={2.2} />
+          Home
+        </button>
         {items.map(({ key, label, icon: Icon }) => {
           const isActive = key === active;
           return (
@@ -24,24 +31,16 @@ export default function BottomNav({ active, onChange, savedCount }: Props) {
               key={key}
               type="button"
               onClick={() => onChange(key)}
-              className="relative flex flex-1 flex-col items-center gap-1 py-3"
+              aria-current={isActive ? 'page' : undefined}
+              className={`${itemClass} ${isActive ? 'bg-ink text-paper' : 'hover:bg-ink/8'}`}
             >
-              <div className="relative">
-                <Icon
-                  size={21}
-                  strokeWidth={2.2}
-                  className={isActive ? 'text-ink-900' : 'text-ink-500'}
-                  fill={isActive && key === 'saved' ? 'currentColor' : 'none'}
-                />
-                {key === 'saved' && savedCount > 0 && (
-                  <span className="absolute -right-2 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-terracotta-600 px-1 text-[9px] font-bold text-cream-50">
-                    {savedCount}
-                  </span>
-                )}
-              </div>
-              <span className={`text-[11px] font-medium ${isActive ? 'text-ink-900' : 'text-ink-500'}`}>
-                {label}
-              </span>
+              <Icon size={17} strokeWidth={2.2} />
+              {label}
+              {key === 'saved' && savedCount > 0 && (
+                <span className="flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1 text-[11px] font-bold text-on-accent">
+                  {savedCount}
+                </span>
+              )}
             </button>
           );
         })}

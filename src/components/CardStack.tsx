@@ -85,16 +85,16 @@ export default function CardStack({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="flex h-full flex-col items-center justify-center gap-5 rounded-[28px] border border-dashed border-ink-900/15 bg-cream-50/60 px-8 text-center"
+              className="flex h-full flex-col items-center justify-center gap-4 rounded-tile border border-line bg-wash px-8 text-center"
             >
-              <p className="font-serif text-2xl text-ink-900">Kaarten op!</p>
-              <p className="text-sm text-ink-600">
+              <p className="font-serif text-3xl font-bold leading-[1.1]">Kaarten op!</p>
+              <p className="font-serif text-base leading-[1.6] text-ink-soft">
                 Jullie zijn door deze stapel heen. Begin opnieuw of stel de sfeer bij.
               </p>
               <button
                 type="button"
                 onClick={handleReshuffle}
-                className="rounded-full bg-ink-900 px-5 py-2.5 text-sm font-semibold text-cream-50"
+                className="rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-transform active:scale-[0.98]"
               >
                 Nieuwe stapel
               </button>
@@ -103,18 +103,18 @@ export default function CardStack({
         </AnimatePresence>
       </div>
 
-      <div className="mx-auto mt-8 flex w-full max-w-md items-start justify-center gap-6">
+      <div className="mx-auto mt-9 flex w-full max-w-md items-start justify-center gap-6">
         <div className="flex flex-col items-center gap-1.5">
           <button
             type="button"
             aria-label="Niet mijn ding"
             disabled={!top}
             onClick={() => handleButtonSwipe('left')}
-            className="flex h-14 w-14 items-center justify-center rounded-full border border-terracotta-600/20 bg-terracotta-500/10 text-terracotta-600 shadow-card transition-transform active:scale-95 disabled:opacity-40"
+            className="flex h-14 w-14 items-center justify-center rounded-full border border-ink/30 transition-[transform,border-color] hover:border-ink active:scale-95 disabled:opacity-40"
           >
             <ThumbsDown size={22} strokeWidth={2.2} />
           </button>
-          <span className="text-[11px] font-medium text-ink-500">Niet mijn ding</span>
+          <span className="text-xs font-medium text-ink-soft">Niet mijn ding</span>
         </div>
         <div className="flex flex-col items-center gap-1.5 pt-1.5">
           <button
@@ -122,11 +122,11 @@ export default function CardStack({
             aria-label="Nieuwe vraag"
             disabled={!top}
             onClick={handleSkip}
-            className="flex h-11 w-11 items-center justify-center rounded-full text-ink-600 transition-transform active:scale-95 disabled:opacity-40"
+            className="flex h-11 w-11 items-center justify-center rounded-full transition-[transform,background-color] hover:bg-ink/8 active:scale-95 disabled:opacity-40"
           >
             <ArrowRight size={20} strokeWidth={2.2} />
           </button>
-          <span className="text-[11px] font-medium text-ink-500">Nieuwe vraag</span>
+          <span className="text-xs font-medium text-ink-soft">Nieuwe vraag</span>
         </div>
         <div className="flex flex-col items-center gap-1.5">
           <button
@@ -134,11 +134,11 @@ export default function CardStack({
             aria-label="Wel mijn ding"
             disabled={!top}
             onClick={() => handleButtonSwipe('right')}
-            className="flex h-14 w-14 items-center justify-center rounded-full border border-sage-500/25 bg-sage-500/10 text-sage-500 shadow-card transition-transform active:scale-95 disabled:opacity-40"
+            className="flex h-14 w-14 items-center justify-center rounded-full border border-ink/30 transition-[transform,border-color] hover:border-ink active:scale-95 disabled:opacity-40"
           >
             <ThumbsUp size={22} strokeWidth={2.2} />
           </button>
-          <span className="text-[11px] font-medium text-ink-500">Wel mijn ding</span>
+          <span className="text-xs font-medium text-ink-soft">Wel mijn ding</span>
         </div>
       </div>
 
@@ -146,7 +146,7 @@ export default function CardStack({
         type="button"
         disabled={!top}
         onClick={() => top && onFocusQuestion(top)}
-        className="mx-auto mt-6 flex w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-ink-900 px-6 py-4 text-sm font-semibold text-cream-50 shadow-card transition-transform active:scale-[0.98] disabled:opacity-40"
+        className="mx-auto mt-5 flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-base font-semibold text-on-accent transition-[transform,background-color] hover:bg-accent-deep active:scale-[0.98] disabled:opacity-40"
       >
         <Maximize2 size={17} strokeWidth={2.3} />
         Stel deze vraag
